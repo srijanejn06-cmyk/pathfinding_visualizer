@@ -12,6 +12,7 @@ const setEndBtn = document.getElementById('setEndBtn');
 const wallModeBtn = document.getElementById('wallModeBtn');
 const runBtn = document.getElementById('runBtn');
 const shareBtn = document.getElementById('shareBtn');
+const waShareBtn = document.getElementById('waShareBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 gridDiv.style.gridTemplateRows = `repeat(${ROWS}, 1fr)`;
@@ -229,5 +230,15 @@ if (shareBtn) {
       // fallback
       prompt('Copy this URL:', location.href);
     }
+  });
+}
+
+// WhatsApp share: open WhatsApp web/mobile compose with prefilled message
+if (waShareBtn) {
+  waShareBtn.addEventListener('click', () => {
+    const url = location.href;
+    const txt = `Check out this Pathfinding Visualizer (A* demo): ${url}`;
+    const wa = `https://wa.me/?text=${encodeURIComponent(txt)}`;
+    window.open(wa, '_blank');
   });
 }

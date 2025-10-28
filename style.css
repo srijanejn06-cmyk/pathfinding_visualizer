@@ -10,6 +10,19 @@ body {
   margin: 20px auto;
   border: 1px solid #ccc;
 }
+.banner {
+  max-width: 900px;
+  margin: 0 auto 12px;
+  padding: 10px 14px;
+  background: #f6f9ff;
+  border: 1px solid #dbe8ff;
+  text-align: left;
+}
+.banner h2 { margin: 0 0 6px; font-size: 1rem; }
+.banner ol { margin: 0 0 6px 18px; padding: 0; }
+.share-links { margin-top: 6px; }
+.share-links button { background: #25D366; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
+.share-links button:hover { opacity: 0.95; }
 .cell {
   width: 20px;
   height: 20px;
