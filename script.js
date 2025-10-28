@@ -11,6 +11,7 @@ const setStartBtn = document.getElementById('setStartBtn');
 const setEndBtn = document.getElementById('setEndBtn');
 const wallModeBtn = document.getElementById('wallModeBtn');
 const runBtn = document.getElementById('runBtn');
+const shareBtn = document.getElementById('shareBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 gridDiv.style.gridTemplateRows = `repeat(${ROWS}, 1fr)`;
@@ -216,3 +217,17 @@ async function astar() {
 }
 
 runBtn.addEventListener('click', astar);
+
+// Share button: copy the live URL to clipboard for easy sharing
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    try {
+      const url = location.href;
+      await navigator.clipboard.writeText(url);
+      alert('Share URL copied to clipboard:\n' + url);
+    } catch (e) {
+      // fallback
+      prompt('Copy this URL:', location.href);
+    }
+  });
+}
