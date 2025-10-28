@@ -3,6 +3,10 @@ const COLS = 40;
 const gridDiv = document.getElementById('grid');
 // Diagnostic log to confirm the script executed on the page
 console.log('Pathfinding Visualizer: script loaded');
+
+// Pointer state for click-and-drag wall drawing
+let pointerDown = false;
+window.addEventListener('pointerup', () => { pointerDown = false; });
 const setStartBtn = document.getElementById('setStartBtn');
 const setEndBtn = document.getElementById('setEndBtn');
 const wallModeBtn = document.getElementById('wallModeBtn');
@@ -53,11 +57,35 @@ for (let r = 0; r < ROWS; r++) {
       }
     });
     cell.element = cellDiv;
+    // Pointer events for drawing walls by dragging when wallMode is active
+    cellDiv.addEventListener('pointerdown', (e) => {
+      // Prevent focusing/selection side-effects
+      e.preventDefault();
+      if (wallMode) {
+        pointerDown = true;
+        cell.isWall = !cell.isWall;
+        cellDiv.classList.toggle('wall');
+      }
+    });
+    cellDiv.addEventListener('pointerenter', () => {
+      if (pointerDown && wallMode) {
+        cell.isWall = true;
+        cellDiv.classList.add('wall');
+      }
+    });
     gridDiv.appendChild(cellDiv);
     row.push(cell);
   }
   grid.push(row);
 }
+
+// Set sensible defaults so visitors can immediately run the demo
+const defaultStart = grid[Math.floor(ROWS / 4)][Math.floor(COLS / 4)];
+const defaultEnd = grid[Math.floor((ROWS * 3) / 4)][Math.floor((COLS * 3) / 4)];
+startCell = defaultStart;
+endCell = defaultEnd;
+startCell.element.classList.add('start');
+endCell.element.classList.add('end');
 
 // Button event listeners
 setStartBtn.addEventListener('click', () => {

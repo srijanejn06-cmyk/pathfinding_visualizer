@@ -23,6 +23,14 @@ A web-based visualization tool for the A* pathfinding algorithm. This interactiv
 4. Click "Run A*" to visualize the pathfinding process
 5. Use "Clear Grid" to reset the visualization
 
+## Live demo
+
+The app is published using GitHub Pages and available at:
+
+https://srijanejn06-cmyk.github.io/pathfinding_visualizer/
+
+Share this URL with others — they can open it in any modern browser and use the visualizer immediately. The site sets a default start and end so visitors can press "Run A*" without configuration.
+
 ## Technologies Used
 
 - HTML5
