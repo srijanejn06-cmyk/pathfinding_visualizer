@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+#controls {
+  margin: 10px;
+}
+#grid {
+  display: grid;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+}
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+.cell.wall { background: #333; }
+.cell.start { background: green; }
+.cell.end { background: red; }
+.cell.open { background: lightblue; }
+.cell.closed { background: lightcoral; }
+.cell.path { background: yellow; }
