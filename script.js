@@ -1,6 +1,8 @@
 const ROWS = 30;
 const COLS = 40;
 const gridDiv = document.getElementById('grid');
+// Diagnostic log to confirm the script executed on the page
+console.log('Pathfinding Visualizer: script loaded');
 const setStartBtn = document.getElementById('setStartBtn');
 const setEndBtn = document.getElementById('setEndBtn');
 const wallModeBtn = document.getElementById('wallModeBtn');
@@ -34,6 +36,7 @@ for (let r = 0; r < ROWS; r++) {
     const cellDiv = document.createElement('div');
     cellDiv.classList.add('cell');
     cellDiv.addEventListener('click', () => {
+      console.log(`cell clicked r=${r} c=${c}`);
       if (settingStart) {
         if (startCell) startCell.element.classList.remove('start');
         startCell = cell;
@@ -58,18 +61,21 @@ for (let r = 0; r < ROWS; r++) {
 
 // Button event listeners
 setStartBtn.addEventListener('click', () => {
+  console.log('setStartBtn clicked');
   settingStart = true;
   settingEnd = false;
   wallMode = false;
 });
 
 setEndBtn.addEventListener('click', () => {
+  console.log('setEndBtn clicked');
   settingStart = false;
   settingEnd = true;
   wallMode = false;
 });
 
 wallModeBtn.addEventListener('click', () => {
+  console.log('wallModeBtn clicked');
   wallMode = !wallMode;
   settingStart = false;
   settingEnd = false;
@@ -77,6 +83,7 @@ wallModeBtn.addEventListener('click', () => {
 });
 
 clearBtn.addEventListener('click', () => {
+  console.log('clearBtn clicked');
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const cell = grid[r][c];
